@@ -1,0 +1,19 @@
+name: airbnb_spain
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - pandas
+  - jupyterlab
+  - isort
+  - black-jupyter
+  - autoflake
+  - ipywidgets
+  - matplotlib
+  - seaborn
+  - ca-certificates
+  - certifi
+  - openssl
+  - scikit-learn
+prefix: /home/uziel/miniconda3/envs/airbnb_spain
