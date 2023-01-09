@@ -16,4 +16,5 @@ dependencies:
   - certifi
   - openssl
   - scikit-learn
+  - lightgbm
 prefix: /home/uziel/miniconda3/envs/airbnb_spain

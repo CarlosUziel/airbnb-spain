@@ -139,6 +139,7 @@ dependencies:
   - libxkbcommon=1.0.3=he3ba5ed_0
   - libxml2=2.10.3=h7463322_0
   - libzlib=1.2.13=h166bdaf_4
+  - lightgbm=3.3.4=py311hcafe171_0
   - lz4-c=1.9.3=h9c3ff4c_1
   - markupsafe=2.1.1=py311hd4cff14_2
   - matplotlib=3.6.2=py311h38be061_0
