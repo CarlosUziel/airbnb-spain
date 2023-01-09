@@ -128,16 +128,13 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-*.pdf
-*.PDF
-*.csv
-*.CSV
-*.TXT
+src/*.pdf
+src/*.csv
 *.idea
 *.bin
-*.html
+src/*.html
 *.pyc
-.json
+src/.json
 .JSON
 .vscode
 
