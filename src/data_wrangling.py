@@ -5,6 +5,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from ml import cross_val_lgbm
+
 
 def airbnb_avg_price(listings_path: Path, n_hoods: int = 1):
     """
@@ -273,15 +275,6 @@ def airbnb_avg_profit(
     ]
     listings_df["id"] = pd.to_numeric(listings_df["id"], errors="coerce")
 
-    # 0.3. Sum reservations price for each listing
-    calendar_df[calendar_df["available"] == "f"][
-        ["listing_id", "adjusted_price_num"]
-    ].groupby("listing_id").sum(numeric_only=True).join(
-        listings_df.set_index("id")
-    ).to_csv(
-        "tmp.csv"
-    )
-
     # 1. Get profits for each listing
     listings_profits_df = (
         calendar_df[calendar_df["available"] == "f"][
@@ -318,3 +311,148 @@ def airbnb_avg_profit(
     logging.info(f"Finished processing {listings_path} and {calendar_path}.")
 
     return df, most_profitable_hoods
+
+
+def airbnb_predict_profit(
+    listings_path: Path,
+    calendar_path: Path,
+    n_weeks: int = 8,
+    feature_th: float = 0.2,
+    random_seed: int = 8080,
+):
+    """
+    Provide the data to answer the following question:
+        "What listings' factors affect the total profit in the next N weeks? Can the
+        total profit be predicted?"
+
+    The features for the predictive model are chosen from the available listings fields
+    based on their spearman correlation with the total profit.
+
+    Args:
+        listings_path: File path to a dataframe where each row is a description of each
+            Airbnb listing.
+        calendar_path: File path to a dataframe where each row is a calendar entry for
+            one of the Airbnb listings.
+        n_weeks: How many weeks into the future to look at.
+        feature_th: Select columns whose correlation with profit is at least this big,
+            in absolute terms.
+
+    """
+    logging.info(f"Processing {listings_path} and {calendar_path}...")
+
+    # 0. Setup
+    # 0.1. Load and transform calendar data
+    calendar_df = pd.read_csv(calendar_path, low_memory=False)
+
+    calendar_df["date"] = pd.to_datetime(calendar_df["date"])
+    calendar_df = calendar_df[
+        calendar_df["date"]
+        <= (calendar_df["date"].min() + datetime.timedelta(weeks=n_weeks))
+    ]
+
+    price_str_to_float = (
+        lambda x: float(x.replace("$", "").replace(",", ""))
+        if isinstance(x, str)
+        else x
+    )
+    # remove non-string/non-numeric values from relevant columns
+    calendar_df = calendar_df[
+        ~pd.to_numeric(calendar_df["listing_id"], errors="coerce").isna()
+        & pd.to_numeric(calendar_df["adjusted_price"], errors="coerce").isna()
+    ]
+    calendar_df["listing_id"] = pd.to_numeric(
+        calendar_df["listing_id"], errors="coerce"
+    )
+    calendar_df["adjusted_price_num"] = calendar_df["adjusted_price"].apply(
+        price_str_to_float
+    )
+
+    # 0.2. Load and transform listings data
+    listings_df = pd.read_csv(listings_path, low_memory=False).dropna(
+        subset=["room_type", "neighbourhood_cleansed", "id"]
+    )
+
+    # 0.3. Remove non-string/non-numeric values from relevant columns
+    listings_df = listings_df[
+        pd.to_numeric(listings_df["room_type"], errors="coerce").isna()
+        & pd.to_numeric(listings_df["neighbourhood_cleansed"], errors="coerce").isna()
+        & pd.to_numeric(listings_df["price"], errors="coerce").isna()
+        & ~pd.to_numeric(listings_df["id"], errors="coerce").isna()
+    ]
+    listings_df["id"] = pd.to_numeric(listings_df["id"], errors="coerce")
+    listings_df["price_num"] = listings_df["price"].apply(price_str_to_float)
+
+    # 0.4. Remove possible confounding variables
+    listings_df = listings_df.drop(
+        columns=[
+            c
+            for c in listings_df.columns
+            if any([s in c for s in ["availability", "calculated"]])
+        ]
+    )
+
+    # 1. Get profits for each listing
+    listings_profits_df = (
+        calendar_df[calendar_df["available"] == "f"][
+            ["listing_id", "adjusted_price_num"]
+        ]
+        .groupby("listing_id")
+        .sum(numeric_only=True)
+        .join(listings_df.set_index("id"))
+        .rename(columns={"adjusted_price_num": "total_profit"})
+    )
+    listings_profits_df.columns = [
+        c.lower().replace(" ", "_") for c in listings_profits_df.columns
+    ]
+
+    # 2. Select numeric and categorical features
+    profits_corr_num = (
+        listings_profits_df.select_dtypes(include=(float, int))
+        .corr(method="spearman")["total_profit"]
+        .dropna()
+        .sort_values(key=abs, ascending=False)
+    )
+    num_features = profits_corr_num.drop("total_profit")[
+        abs(profits_corr_num) > feature_th
+    ].index
+
+    profits_cat_df = listings_profits_df.select_dtypes(include=object)
+    profits_cat_df = pd.concat(
+        [
+            pd.get_dummies(
+                profits_cat_df[profits_cat_df.columns[profits_cat_df.nunique() <= 10]],
+                dummy_na=True,
+            ),
+            listings_profits_df["total_profit"],
+        ],
+        axis=1,
+    )
+    profits_cat_df.columns = [
+        c.lower().replace(" ", "_") for c in profits_cat_df.columns
+    ]
+
+    profits_corr_cat = (
+        profits_cat_df.corr(method="spearman")["total_profit"]
+        .dropna()
+        .sort_values(key=abs, ascending=False)
+    )
+    cat_features = profits_corr_cat.drop("total_profit")[
+        abs(profits_corr_cat) > feature_th
+    ].index
+
+    # 3. Set input matrix
+    data = pd.concat(
+        [
+            listings_profits_df[num_features],
+            profits_cat_df[cat_features],
+        ],
+        axis=1,
+    )
+    y = listings_profits_df["total_profit"]
+
+    # 4. K-fold evaluation of a predictive model
+    mean_r2_score = cross_val_lgbm(data, y, random_seed)
+
+    logging.info(f"Finished processing {listings_path} and {calendar_path}.")
+
+    return num_features, cat_features, mean_r2_score
