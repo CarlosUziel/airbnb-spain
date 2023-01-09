@@ -8,21 +8,17 @@
       <a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#premise">Premise</a></li>
-        <li><a href="#goal">Goal</a></li>
         <li><a href="#execution-plan">Execution Plan</a></li>
         <li><a href="#data">Data</a></li>
-        <li><a href="#data-schema">Data Schema</a></li>
       </ul>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#setting-up-a-conda-environment">Setting up a conda environment</a></li>
-        <li><a href="#setting-up-a-local-apache-airflow-server">Setting up a local Apache Airflow server</a></li>
-        <li><a href="#getting-ready-to-interact-with-aws">Getting ready to interact with AWS</a></li>
+        <li><a href="#file-descriptions">File descriptions</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
     <li><a href="#additional-notes">Additional Notes</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -32,7 +28,7 @@
 
 # A look at Airbnb data in Spain
 
-In this mini-project, I use the [CRISP-DM](https://en.wikipedia.org/wiki/Cross-industry_standard_process_for_data_mining) process to answer several business questions about Airbnb locations and reservations across Spain using their publicly-available data.
+In this mini-project, I use the [CRISP-DM](https://en.wikipedia.org/wiki/Cross-industry_standard_process_for_data_mining) process to answer several business questions about Airbnb locations and reservations across Spain using their publicly-available data. Get to know the main insights by reading [my post on Medium]().
 
 ---
 
