@@ -156,6 +156,10 @@ def airbnb_hood_hosts(listings_path: Path, n_hoods: int = 1):
         subset=["id", "host_id", "neighbourhood_cleansed"]
     )
 
+    listings_df = listings_df[
+        pd.to_numeric(listings_df["neighbourhood_cleansed"], errors="coerce").isna()
+    ]
+
     # 1. Get number of listings per host in each neighbourhood
     df = (
         listings_df[["host_id", "neighbourhood_cleansed", "id"]]
