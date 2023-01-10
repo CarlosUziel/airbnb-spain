@@ -50,8 +50,8 @@ def airbnb_avg_price(listings_path: Path, n_hoods: int = 1):
         .round(2)
     )
 
-    # 2. Sort by summing up all room types
-    sorted_sums = df["price_num"].groupby(level=0).sum().sort_values(ascending=False)
+    # 2. Sort by averaging all room types
+    sorted_sums = df["price_num"].groupby(level=0).mean().sort_values(ascending=False)
     df = df.reindex(sorted_sums.index, level=0).unstack(level=1)["price_num"]
 
     # 3. Select most expensive neighborhood for each room type
@@ -111,30 +111,30 @@ def airbnb_avg_accept_rate(listings_path: Path, n_hoods: int = 1):
         .round(2)
     )
 
-    # 2. Sort by summing up all room types
+    # 2. Sort by averaging all room types
     sorted_sums = (
         df["host_acceptance_rate_num"]
         .groupby(level=0)
-        .sum()
+        .mean()
         .sort_values(ascending=False)
     )
     df = df.reindex(sorted_sums.index, level=0).unstack(level=1)[
         "host_acceptance_rate_num"
     ]
 
-    # 3. Select the neighborhood with the highest acceptance rate for each room type
-    highest_accept_rate_hoods = {
+    # 3. Select the neighborhood with the lowest acceptance rate for each room type
+    lowest_accept_rate_hoods = {
         room_type: " | ".join(
             [
                 s.title()
-                for s in df[room_type].sort_values(ascending=False).iloc[:n_hoods].index
+                for s in df[room_type].sort_values(ascending=True).iloc[:n_hoods].index
             ]
         )
         for room_type in df.columns
     }
     logging.info(f"Finished processing {listings_path}.")
 
-    return df, highest_accept_rate_hoods
+    return df, lowest_accept_rate_hoods
 
 
 def airbnb_hood_hosts(listings_path: Path, n_hoods: int = 1):
@@ -197,13 +197,13 @@ def airbnb_hood_hosts(listings_path: Path, n_hoods: int = 1):
         ascending=False,
     )
 
-    # 4. Select neighbourhoods with highest concentration
-    most_dense_hoods = {
+    # 4. Select neighbourhoods with lowest concentration
+    least_dense_hoods = {
         host_group: " | ".join(
             [
                 s.title()
                 for s in host_counts_df[host_group]
-                .sort_values(ascending=False)
+                .sort_values(ascending=True)
                 .iloc[:n_hoods]
                 .index
             ]
@@ -212,7 +212,7 @@ def airbnb_hood_hosts(listings_path: Path, n_hoods: int = 1):
     }
     logging.info(f"Finished processing {listings_path}.")
 
-    return host_counts_df, most_dense_hoods
+    return host_counts_df, least_dense_hoods
 
 
 def airbnb_avg_profit(
