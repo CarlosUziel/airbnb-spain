@@ -38,7 +38,7 @@
 ---
 ## About The Project
 
-In this mini-project, I use the [CRISP-DM](https://en.wikipedia.org/wiki/Cross-industry_standard_process_for_data_mining) process to answer several business questions about Airbnb locations and reservations across Spain using their publicly-available data. Get to know the main insights by reading [my post on Medium]().
+In this mini-project, I use the [CRISP-DM](https://en.wikipedia.org/wiki/Cross-industry_standard_process_for_data_mining) process to answer several business questions about Airbnb locations and reservations across Spain using their publicly-available data. Get to know the main insights by reading [my post on Medium](https://medium.com/@carlosuziel.pm/can-we-guess-the-best-location-in-spain-to-invest-in-real-state-9a7c74304456).
 
 ### Premise
 
