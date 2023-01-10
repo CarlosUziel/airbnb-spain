@@ -1,5 +1,14 @@
 <div id="top"></div>
 
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <img src="images/airbnb_spain.png" alt="Aibnb locations" width="700" height="350">
+
+  <h3 align="center">A look at Airbnb data in Spain</h3>
+
+</div>
+
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -26,13 +35,10 @@
   </ol>
 </details>
 
-# A look at Airbnb data in Spain
+---
+## About The Project
 
 In this mini-project, I use the [CRISP-DM](https://en.wikipedia.org/wiki/Cross-industry_standard_process_for_data_mining) process to answer several business questions about Airbnb locations and reservations across Spain using their publicly-available data. Get to know the main insights by reading [my post on Medium]().
-
----
-
-## About The Project
 
 ### Premise
 
