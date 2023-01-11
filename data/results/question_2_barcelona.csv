@@ -1,0 +1,73 @@
+neighbourhood_cleansed,Entire home/apt,Hotel room,Private room,Shared room
+Canyelles,1.0,,,
+Ciutat Meridiana,,,1.0,
+Baró de Viver,0.98,,0.98,
+la Trinitat Nova,,,0.98,
+el Camp de l'Arpa del Clot,0.92,0.98,0.9,0.98
+la Font de la Guatlla,0.93,1.0,0.85,0.99
+Sarrià,0.94,,0.94,
+Sants - Badal,0.94,0.97,0.89,0.95
+la Dreta de l'Eixample,0.91,0.96,0.92,0.96
+la Maternitat i Sant Ramon,0.95,0.97,0.83,0.99
+Vallbona,0.93,,,
+la Salut,0.9,,0.95,
+la Nova Esquerra de l'Eixample,0.89,1.0,0.87,0.94
+el Raval,0.88,0.97,0.9,0.95
+les Tres Torres,0.89,,0.96,
+Can Peguera,,,0.92,
+Diagonal Mar i el Front Marítim del Poblenou,0.89,,0.95,
+la Marina del Prat Vermell,0.96,1.0,0.89,0.82
+Navas,0.83,,0.92,1.0
+Sant Antoni,0.9,0.99,0.86,
+el Bon Pastor,0.94,,0.89,
+l'Antiga Esquerra de l'Eixample,0.91,1.0,0.85,0.89
+Can Baró,0.84,,0.98,
+la Bordeta,0.95,,0.87,
+"Sant Pere, Santa Caterina i la Ribera",0.84,0.97,0.91,
+el Clot,0.83,,0.88,0.99
+el Carmel,0.95,,0.85,
+les Corts,0.89,,0.81,0.99
+la Sagrada Família,0.9,1.0,0.85,0.82
+Hostafrancs,0.94,,0.84,
+Sant Andreu,0.85,,0.86,0.95
+el Fort Pienc,0.92,,0.85,
+el Parc i la Llacuna del Poblenou,0.95,0.99,0.83,0.77
+la Marina de Port,0.93,,0.82,
+la Barceloneta,0.86,,0.89,
+Provençals del Poblenou,0.92,,0.82,
+la Vila Olímpica del Poblenou,0.89,,0.73,0.99
+el Putxet i el Farró,0.9,0.92,0.78,
+la Font d'en Fargues,0.91,,0.81,
+el Poble Sec,0.81,0.99,0.88,0.76
+el Camp d'en Grassot i Gràcia Nova,0.88,0.93,0.77,
+la Sagrera,0.86,,0.85,
+el Poblenou,0.89,,0.82,
+Horta,0.94,,0.76,
+"Vallvidrera, el Tibidabo i les Planes",0.75,,0.81,0.94
+Montbau,0.76,,0.9,
+Sant Gervasi - la Bonanova,0.83,,0.82,
+el Besòs i el Maresme,0.91,,0.73,
+Vallcarca i els Penitents,0.81,,0.83,
+Verdun,0.67,,0.96,
+la Vila de Gràcia,0.91,0.69,0.75,0.89
+el Barri Gòtic,0.85,1.0,0.88,0.5
+el Guinardó,0.85,,0.76,
+el Baix Guinardó,0.89,,0.71,
+la Teixonera,0.69,,0.9,
+Porta,0.76,,0.81,
+la Trinitat Vella,0.83,,0.73,
+la Prosperitat,0.63,,0.91,
+Sant Gervasi - Galvany,0.91,1.0,0.83,0.34
+Sant Martí de Provençals,0.84,,0.67,
+la Guineueta,0.96,,0.53,
+la Verneda i la Pau,0.82,,0.67,
+Vilapicina i la Torre Llobeta,0.88,,0.59,
+la Vall d'Hebron,0.5,,0.97,
+Pedralbes,0.85,,0.61,
+Sants,0.91,,0.84,0.33
+el Congrés i els Indians,0.94,,0.8,0.34
+Sant Genís dels Agudells,0.68,,,
+el Coll,0.76,,0.58,
+Torre Baró,0.33,,1.0,
+el Turó de la Peira,0.5,,0.71,
+les Roquetes,0.93,,0.79,0.0

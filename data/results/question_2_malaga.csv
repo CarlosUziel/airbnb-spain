@@ -1,0 +1,12 @@
+neighbourhood_cleansed,Entire home/apt,Hotel room,Private room,Shared room
+Centro,0.95,1.0,0.94,0.93
+Este,0.92,1.0,0.92,0.94
+Palma-Palmilla,0.91,,0.9,
+Bailen-Miraflores,0.89,0.94,0.87,
+Carretera de Cadiz,0.92,,0.88,
+Churriana,0.91,,0.86,0.84
+Ciudad Jardin,0.93,,0.8,
+Cruz De Humilladero,0.81,,0.87,0.85
+Campanillas,0.86,,0.8,
+Teatinos-Universidad,0.86,,0.63,
+Puerto de la Torre,0.92,,0.36,

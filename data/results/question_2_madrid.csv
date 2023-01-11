@@ -1,0 +1,127 @@
+neighbourhood_cleansed,Entire home/apt,Hotel room,Private room,Shared room
+Corralejos,1.0,,0.98,
+Alameda de Osuna,1.0,,0.93,
+Amposta,0.96,,0.97,
+Los Angeles,0.98,,0.91,0.94
+Embajadores,0.91,1.0,0.86,0.98
+Moscardó,0.95,,0.92,
+Universidad,0.91,0.98,0.88,0.96
+Atalaya,,,0.93,
+Palacio,0.93,0.98,0.84,0.96
+Buenavista,0.88,,0.87,1.0
+Adelfas,0.97,,0.86,
+Lista,0.89,,0.85,1.0
+Lucero,0.96,,0.79,0.97
+El Plantío,0.86,,0.95,
+Pinar del Rey,0.95,,0.84,0.92
+Justicia,0.91,1.0,0.9,0.8
+Casco Histórico de Barajas,0.9,,0.84,0.96
+Acacias,0.9,,0.8,1.0
+Butarque,0.98,,0.82,
+Argüelles,0.89,1.0,0.8,
+Pacífico,0.88,,0.86,0.95
+Concepción,0.91,,0.78,1.0
+Valdefuentes,0.9,,0.89,
+Goya,0.89,0.99,0.8,
+Castellana,0.88,,0.84,0.96
+Recoletos,0.86,1.0,0.82,
+Comillas,0.82,,0.88,0.98
+Bellas Vistas,0.83,,0.84,1.0
+Valverde,0.87,,0.91,
+Mirasierra,0.82,,0.95,
+Hispanoamérica,0.91,,0.86,
+Almendrales,0.97,,0.8,
+Entrevías,0.83,,0.82,1.0
+Rosas,0.96,,0.8,
+Aravaca,0.87,,0.89,
+Arcos,0.94,,0.82,
+Atocha,0.94,,0.82,
+Sol,0.93,1.0,0.9,0.68
+Cuatro Caminos,0.86,,0.77,1.0
+Canillas,0.86,0.99,0.78,
+Prosperidad,0.84,0.96,0.83,
+Jerónimos,0.84,,0.91,
+Ambroz,1.0,,0.75,
+Campamento,0.87,,0.88,
+Ciudad Jardín,0.81,0.96,0.85,
+Quintana,0.86,,0.76,1.0
+Hellín,0.72,,0.9,1.0
+Rios Rosas,0.85,0.97,0.67,1.0
+Pueblo Nuevo,0.96,,0.78,
+Los Rosales,0.95,,0.78,
+Aluche,0.85,,0.74,1.0
+San Pascual,0.96,0.96,0.67,
+Portazgo,0.78,,0.82,0.99
+Marroquina,0.79,,0.93,
+Ibiza,0.87,,0.85,
+Puerta del Angel,0.86,,0.85,
+Fuente del Berro,0.9,,0.81,
+Casco Histórico de Vallecas,0.96,,0.75,
+Casco Histórico de Vicálvaro,0.89,,0.82,
+Imperial,0.94,,0.77,
+San Cristobal,0.8,,0.91,
+Piovera,0.86,0.99,0.71,
+Puerta Bonita,0.91,,0.79,
+Pilar,0.9,,0.8,
+Delicias,0.9,,0.8,
+Palos de Moguer,0.93,,0.77,0.84
+Simancas,0.87,,0.74,0.93
+Castillejos,0.88,,0.81,
+Niño Jesús,0.85,,0.84,
+Almenara,0.9,,0.78,
+Apostol Santiago,0.8,,0.87,
+Palomeras Sureste,0.92,,0.75,
+Castilla,0.95,,0.71,
+Nueva España,0.82,,0.84,
+Cuatro Vientos,0.83,,0.83,
+Ventas,0.81,,0.83,
+Cármenes,0.85,,0.79,
+Guindalera,0.93,,0.71,
+Pradolongo,0.86,,0.72,0.88
+Chopera,0.86,,0.77,
+Costillares,0.95,,0.67,
+Palomeras Bajas,0.88,,0.9,0.65
+San Fermín,0.76,,0.86,
+Canillejas,0.87,,0.6,0.96
+San Diego,0.87,,0.81,0.74
+Fontarrón,0.94,,0.66,
+Pavones,0.98,,0.62,
+Vista Alegre,0.8,,0.8,
+San Isidro,0.85,,0.75,
+Numancia,0.91,,0.84,0.65
+Arapiles,0.82,,0.77,
+Valdezarza,0.73,,0.86,
+Cortes,0.92,0.97,0.9,0.38
+Timón,0.92,,0.66,
+Aeropuerto,0.92,,0.66,
+Estrella,0.8,,0.74,
+Casa de Campo,0.73,,0.8,
+Zofío,0.84,,0.69,
+Gaztambide,0.87,,0.72,0.7
+Orcasur,0.75,,0.77,
+Salvador,0.58,,0.93,
+Valdeacederas,0.74,,0.73,0.79
+Aguilas,0.63,,0.62,1.0
+Almagro,0.77,,0.72,
+Legazpi,0.85,,0.64,
+Trafalgar,0.84,,0.74,0.65
+Ciudad Universitaria,0.87,,0.81,0.54
+El Pardo,0.83,,0.65,
+El Viso,0.81,,0.62,
+Rejas,0.72,,0.7,
+Opañel,0.64,,0.77,
+Peñagrande,0.56,,0.84,
+La Paz,0.74,,0.65,
+San Juan Bautista,0.84,,0.54,
+El Goloso,0.94,,0.44,
+Media Legua,0.84,,0.72,0.5
+Orcasitas,0.14,,0.9,1.0
+Valdemarín,1.0,,0.36,
+Abrantes,0.62,,0.74,
+Vinateros,0.67,,0.66,
+Berruguete,0.81,,0.75,0.4
+Palomas,0.7,,0.53,
+San Andrés,0.94,,0.86,0.0
+Santa Eugenia,0.68,,0.5,
+Vallehermoso,0.61,,0.74,0.38
+Colina,0.77,,0.33,
