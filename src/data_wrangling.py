@@ -2,13 +2,16 @@ import datetime
 import logging
 from collections import defaultdict
 from pathlib import Path
+from typing import Dict, Iterable, Tuple
 
 import pandas as pd
 
 from ml import cross_val_lgbm
 
 
-def airbnb_avg_price(listings_path: Path, n_hoods: int = 1):
+def airbnb_avg_price(
+    listings_path: Path, n_hoods: int = 1
+) -> Tuple[pd.DataFrame, Dict[str, str]]:
     """
     Provide the data to answer the following question:
         "What is the average price of each location type per neighbourhood? What are the
@@ -18,6 +21,10 @@ def airbnb_avg_price(listings_path: Path, n_hoods: int = 1):
         listings_path: File path to a dataframe where each row is a description of each
             Airbnb listing.
         n_hoods: Number of top neighbourhoods to include.
+
+    Returns:
+        - Dataframe with the average price per neighbourhood and room type.
+        - A dictionary with the most expensive neighbourhoods per room type.
 
     """
     logging.info(f"Processing {listings_path}...")
@@ -69,7 +76,9 @@ def airbnb_avg_price(listings_path: Path, n_hoods: int = 1):
     return df, most_expensive_hoods
 
 
-def airbnb_avg_accept_rate(listings_path: Path, n_hoods: int = 1):
+def airbnb_avg_accept_rate(
+    listings_path: Path, n_hoods: int = 1
+) -> Tuple[pd.DataFrame, Dict[str, str]]:
     """
     Provide the data to answer the following question:
         "What is the average host acceptance rate per location type and neighborhood? In
@@ -79,6 +88,11 @@ def airbnb_avg_accept_rate(listings_path: Path, n_hoods: int = 1):
         listings_path: File path to a dataframe where each row is a description of each
             Airbnb listing.
         n_hoods: Number of top neighbourhoods to include.
+
+    Returns:
+        - Dataframe with the average acceptance rate per neighbourhood and room type.
+        - A dictionary with the neighbourhoods with lowest acceptance rate per room
+            type.
 
     """
     logging.info(f"Processing {listings_path}...")
@@ -115,7 +129,7 @@ def airbnb_avg_accept_rate(listings_path: Path, n_hoods: int = 1):
     sorted_sums = (
         df["host_acceptance_rate_num"]
         .groupby(level=0)
-        .mean()
+        .mean(numeric_only=True)
         .sort_values(ascending=False)
     )
     df = df.reindex(sorted_sums.index, level=0).unstack(level=1)[
@@ -137,7 +151,9 @@ def airbnb_avg_accept_rate(listings_path: Path, n_hoods: int = 1):
     return df, lowest_accept_rate_hoods
 
 
-def airbnb_hood_hosts(listings_path: Path, n_hoods: int = 1):
+def airbnb_hood_hosts(
+    listings_path: Path, n_hoods: int = 1
+) -> Tuple[pd.DataFrame, Dict[str, str]]:
     """
     Provide the data to answer the following question:
         "How is competition in each neighbourhood? What number and proportion of
@@ -147,6 +163,11 @@ def airbnb_hood_hosts(listings_path: Path, n_hoods: int = 1):
         listings_path: File path to a dataframe where each row is a description of each
             Airbnb listing.
         n_hoods: Number of top neighbourhoods to include.
+
+    Returns:
+        - Dataframe with the number and proportion of hosts in each category per
+            neighbourhood.
+        - A dictionary with the neighbourhoods with lowest concentration of hosts.
 
     """
     logging.info(f"Processing {listings_path}...")
@@ -221,7 +242,7 @@ def airbnb_hood_hosts(listings_path: Path, n_hoods: int = 1):
 
 def airbnb_avg_profit(
     listings_path: Path, calendar_path: Path, n_weeks: int = 8, n_hoods: int = 1
-):
+) -> Tuple[pd.DataFrame, Dict[str, str]]:
     """
     Provide the data to answer the following question:
         "What is the expected average profit per room type and neighborhood when looking
@@ -236,6 +257,10 @@ def airbnb_avg_profit(
         n_weeks: How many weeks into the future to look at.
         n_hoods: Number of top neighbourhoods to include.
 
+    Returns:
+        - Dataframe with the expected average profit per neighbourhood and room type.
+        - A dictionary with the most profitable neighbourhoods per room type.
+
     """
     logging.info(f"Processing {listings_path} and {calendar_path}...")
 
@@ -249,11 +274,6 @@ def airbnb_avg_profit(
         <= (calendar_df["date"].min() + datetime.timedelta(weeks=n_weeks))
     ]
 
-    price_str_to_float = (
-        lambda x: float(x.replace("$", "").replace(",", ""))
-        if isinstance(x, str)
-        else x
-    )
     # remove non-string/non-numeric values from relevant columns
     calendar_df = calendar_df[
         ~pd.to_numeric(calendar_df["listing_id"], errors="coerce").isna()
@@ -261,6 +281,12 @@ def airbnb_avg_profit(
     ]
     calendar_df["listing_id"] = pd.to_numeric(
         calendar_df["listing_id"], errors="coerce"
+    )
+
+    price_str_to_float = (
+        lambda x: float(x.replace("$", "").replace(",", ""))
+        if isinstance(x, str)
+        else x
     )
     calendar_df["adjusted_price_num"] = calendar_df["adjusted_price"].apply(
         price_str_to_float
@@ -294,7 +320,7 @@ def airbnb_avg_profit(
     df = (
         listings_profits_df[["neighbourhood_cleansed", "room_type", "total_profit"]]
         .groupby(["neighbourhood_cleansed", "room_type"])
-        .mean()
+        .mean(numeric_only=True)
         .round(2)
     )
 
@@ -323,7 +349,7 @@ def airbnb_predict_profit(
     n_weeks: int = 8,
     feature_th: float = 0.2,
     random_seed: int = 8080,
-):
+) -> Tuple[Iterable[str], Iterable[str], float]:
     """
     Provide the data to answer the following question:
         "What listings' factors affect the total profit in the next N weeks? Can the
@@ -340,6 +366,11 @@ def airbnb_predict_profit(
         n_weeks: How many weeks into the future to look at.
         feature_th: Select columns whose correlation with profit is at least this big,
             in absolute terms.
+
+    Returns:
+        - A list of numeric features used in the forecasting of profits.
+        - A list of categorical features used in the forecasting of profits.
+        - The mean test R2 score of the predictive model.
 
     """
     logging.info(f"Processing {listings_path} and {calendar_path}...")
@@ -459,4 +490,4 @@ def airbnb_predict_profit(
 
     logging.info(f"Finished processing {listings_path} and {calendar_path}.")
 
-    return num_features, cat_features, mean_r2_score
+    return num_features.tolist(), cat_features.tolist(), mean_r2_score
