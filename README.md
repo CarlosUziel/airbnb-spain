@@ -46,11 +46,11 @@ We will take the role of a private investor that has decided to purchase a prope
 
 After having a brief look at the available data, we have selected a few questions that will aid us in making our investment decisions:
 
-  1. _What is the average price of each location type per neighbourhood? What are the most expensive neighbourhoods on average?_
-  2. _What is the average host acceptance rate per location type and neighborhood? In which neighbourhoods is it the lowest?_
-  3. _How is the competition in each neighbourhood? What number and proportion of listings belong to hosts owning different numbers of locations? In which neighbourhoods is the concentration lower?_
-  4. _What is the expected average profit per room type and neighborhood when looking at the reservations for the next 6 months? What is the neighbourhood expected to be the most profitable in that period?_
-  5. _What listings' factors affect the expected profit for the next 6 months? Can we use them to forecast the expected profit over that period?_
+  1. _**What is the average price of each location type per neighbourhood? What are the most expensive neighbourhoods on average?**_
+  2. _**What is the average host acceptance rate per location type and neighborhood? In which neighbourhoods is it the lowest?**_
+  3. _**How is the competition in each neighbourhood? What number and proportion of listings belong to hosts owning different numbers of locations? In which neighbourhoods is the concentration lower?**_
+  4. _**What is the expected average profit per room type and neighborhood when looking at the reservations for the next 6 months? What is the neighbourhood expected to be the most profitable in that period?**_
+  5. _**What listings' factors affect the expected profit for the next 6 months? Can we use them to forecast the expected profit over that period?**_
 
 We will be comparing the answers to those questions among the different Spanish regions of **Madrid**, **Barcelona**, **Girona**, **Valencia**, **Mallorca**, **Menorca**, **Sevilla**, **Málaga** and **Euskadi**. Hopefully, this will help us in making a more informed investment decision.
 
