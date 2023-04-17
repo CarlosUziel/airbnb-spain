@@ -36,6 +36,7 @@
 </details>
 
 ---
+
 ## About The Project
 
 In this mini-project, I use the [CRISP-DM](https://en.wikipedia.org/wiki/Cross-industry_standard_process_for_data_mining) process to answer several business questions about Airbnb locations and reservations across Spain using their publicly-available data. Get to know the main insights by reading [my post on Medium](https://medium.com/@carlosuziel.pm/can-we-guess-the-best-location-in-spain-to-invest-in-real-state-9a7c74304456).
@@ -46,11 +47,11 @@ We will take the role of a private investor that has decided to purchase a prope
 
 After having a brief look at the available data, we have selected a few questions that will aid us in making our investment decisions:
 
-  1. _**What is the average price of each location type per neighbourhood? What are the most expensive neighbourhoods on average?**_
-  2. _**What is the average host acceptance rate per location type and neighborhood? In which neighbourhoods is it the lowest?**_
-  3. _**How is the competition in each neighbourhood? What number and proportion of listings belong to hosts owning different numbers of locations? In which neighbourhoods is the concentration lower?**_
-  4. _**What is the expected average profit per room type and neighborhood when looking at the reservations for the next 6 months? What is the neighbourhood expected to be the most profitable in that period?**_
-  5. _**What listings' factors affect the expected profit for the next 6 months? Can we use them to forecast the expected profit over that period?**_
+1. _**What is the average price of each location type per neighbourhood? What are the most expensive neighbourhoods on average?**_
+2. _**What is the average host acceptance rate per location type and neighborhood? In which neighbourhoods is it the lowest?**_
+3. _**How is the competition in each neighbourhood? What number and proportion of listings belong to hosts owning different numbers of locations? In which neighbourhoods is the concentration lower?**_
+4. _**What is the expected average profit per room type and neighborhood when looking at the reservations for the next 6 months? What is the neighbourhood expected to be the most profitable in that period?**_
+5. _**What listings' factors affect the expected profit for the next 6 months? Can we use them to forecast the expected profit over that period?**_
 
 We will be comparing the answers to those questions among the different Spanish regions of **Madrid**, **Barcelona**, **Girona**, **Valencia**, **Mallorca**, **Menorca**, **Sevilla**, **Málaga** and **Euskadi**. Hopefully, this will help us in making a more informed investment decision.
 
